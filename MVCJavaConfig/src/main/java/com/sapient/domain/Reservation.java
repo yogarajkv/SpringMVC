@@ -10,6 +10,10 @@ public class Reservation {
 	private Player player;
 	private SportType sport;
 	
+	public Reservation()
+	{
+		
+	}
 	
 	public Reservation(String courtName, Date date, int hour, Player player, SportType sport)	
 	{

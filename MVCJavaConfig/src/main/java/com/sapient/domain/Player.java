@@ -5,11 +5,15 @@ public class Player {
 	private String name;
 	private String phno;
 	
-	public Player(String name, String phno)
+	public Player()
+	{
+		
+	}
+	/*public Player(String name, String phno)
 	{
 		this.name = name;
 		this.phno = phno;
-	}
+	}*/
 	
 	public String getName() {
 		return name;
@@ -22,6 +26,11 @@ public class Player {
 	}
 	public void setPhno(String phno) {
 		this.phno = phno;
+	}
+	
+	public String toString()
+	{
+		return name+":"+ phno;
 	}
 	
 }

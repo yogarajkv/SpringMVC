@@ -16,6 +16,8 @@
 			<th>Date</th>
 			<th>Hour</th>
 			<th>Player</th>
+			<th>Sports ID</th>
+			<th>Sports Name</th>
 		</tr>
 		<c:forEach items="${reservations}" var="reservation">
 			<tr>
@@ -24,6 +26,9 @@
 						pattern="yyyy-MM-dd" /></td>
 				<td>${reservation.hour}</td>
 				<td>${reservation.player.name }</td>
+				<td>${reservation.player.phno }</td>
+				<td>${reservation.sport.id }</td>
+				<td>${reservation.sport.name }</td>
 			</tr>
 		</c:forEach>
 	</table>

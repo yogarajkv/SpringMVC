@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -20,7 +21,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.sapient.converter.SportTypeConverter;
 import com.sapient.interceptors.MeasurementInterceptor;
+import com.sapient.service.ReservationService;
 
 @Configuration
 @EnableWebMvc
@@ -30,8 +33,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	@Autowired
 	ContentNegotiationManager cnm;
 	
+	@Autowired
+	ReservationService reservationService;
 	
-	
+		
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		Map<String,MediaType> mediatypes = new HashMap<String, MediaType>();
@@ -73,6 +78,12 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		ir.setPrefix("/WEB-INF/views/");
 		ir.setSuffix(".jsp");
 		return ir;
+	}
+	
+	@Override
+	public void addFormatters(FormatterRegistry registry) {		
+		registry.addConverter(new SportTypeConverter(reservationService));
+		
 	}
 	
 	
